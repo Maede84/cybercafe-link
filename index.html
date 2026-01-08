@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منوی دسترسی سریع کافی نت</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'B Nazanin', Tahoma, Arial, sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.7;
+            font-size: 16px;
+        }
+        
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 25px;
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 35px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e2e8f0;
+        }
+        
+        h1 {
+            color: #334155;
+            font-size: 2.1rem;
+            margin-bottom: 12px;
+            font-weight: 500;
+            letter-spacing: -0.5px;
+        }
+        
+        .subtitle {
+            color: #64748b;
+            font-size: 1.2rem;
+            max-width: 850px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(580px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .category-card {
+            background: white;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.25s ease;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .category-card:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            transform: translateY(-3px);
+        }
+        
+        .category-header {
+            padding: 22px 25px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+        
+        .link-count {
+            background: rgba(255, 255, 255, 0.25);
+            padding: 6px 14px;
+            border-radius: 18px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            backdrop-filter: blur(4px);
+        }
+        
+        .links-container {
+            padding: 25px;
+        }
+        
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 16px;
+        }
+        
+        .link-btn {
+            display: block;
+            background: #f8fafc;
+            color: #334155;
+            padding: 18px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.25s ease;
+            border: 1px solid #e2e8f0;
+            font-size: 1.05rem;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+        
+        .link-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+        }
+        
+        /* رنگ‌های ملایم با تضاد خوب برای خوانایی */
+        .car .category-header { 
+            background: #fda4af; 
+            color: #7f1d1d; 
+        }
+        .car .link-btn:hover { 
+            background: #fecdd3; 
+            border-color: #fda4af;
+            color: #7f1d1d;
+        }
+        
+        .edu .category-header { 
+            background: #86efac; 
+            color: #14532d; 
+        }
+        .edu .link-btn:hover { 
+            background: #bbf7d0; 
+            border-color: #86efac;
+            color: #14532d;
+        }
+        
+        .gov .category-header { 
+            background: #93c5fd; 
+            color: #1e3a8a; 
+        }
+        .gov .link-btn:hover { 
+            background: #bfdbfe; 
+            border-color: #93c5fd;
+            color: #1e3a8a;
+        }
+        
+        .law .category-header { 
+            background: #d8b4fe; 
+            color: #4c1d95; 
+        }
+        .law .link-btn:hover { 
+            background: #e9d5ff; 
+            border-color: #d8b4fe;
+            color: #4c1d95;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            color: #64748b;
+            margin-top: 30px;
+            font-size: 1rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+        
+        .last-update {
+            color: #94a3b8;
+            margin-top: 10px;
+            font-size: 0.95rem;
+        }
+        
+        /* بهبود خوانایی متن */
+        .link-btn {
+            font-size: 1.1rem;
+            letter-spacing: -0.2px;
+        }
+        
+        .category-title {
+            font-size: 1.6rem;
+        }
+        
+        h1 {
+            font-size: 2.6rem;
+        }
+        
+        @media (max-width: 1100px) {
+            .categories-grid {
+                grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+            }
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .category-title {
+                font-size: 1.4rem;
+            }
+            
+            .link-btn {
+                font-size: 1rem;
+                padding: 16px;
+            }
+            
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .categories-grid {
+                gap: 20px;
+            }
+        }
+        
+        /* بهبود کنتراست برای خوانایی بهتر */
+        .link-btn {
+            background: #ffffff;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .link-btn:hover {
+            border-width: 2px;
+        }
+        
+        /* تضاد رنگ برای دکمه‌ها در حالت عادی */
+        .car .link-btn { border-color: #fecaca; }
+        .edu .link-btn { border-color: #bbf7d0; }
+        .gov .link-btn { border-color: #bfdbfe; }
+        .law .link-btn { border-color: #e9d5ff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>منوی دسترسی سریع کافی نت</h1>
+            <p class="subtitle">با کلیک بر روی هر لینک، مستقیماً به سامانه مورد نظر هدایت می‌شوید. طراحی شده برای سهولت دسترسی مشتریان محترم</p>
+        </header>
+        
+        <main class="categories-grid">
+            <!-- دسته: خودرو و حمل‌ونقل -->
+            <section class="category-card car">
+                <div class="category-header">
+                    <h2 class="category-title">خودرو و حمل‌ونقل</h2>
+                    <span class="link-count">6 لینک</span>
+                </div>
+                <div class="links-container">
+                    <div class="links-grid">
+                        <a href="https://sakha.epolice.ir/portal/login?service=http%3A%2F%2Fsakha.epolice.ir%3A80%2Fportal%2Fticket_check" target="_blank" class="link-btn">
+                            سامانه سخا (پلیس +۱۰)
+                        </a>
+                        <a href="https://pishkhan24.com/khalafi/" target="_blank" class="link-btn">
+                            استعلام و پرداخت خلافی خودرو
+                        </a>
+                        <a href="https://nobatdehi.epolice.ir/" target="_blank" class="link-btn">
+                            نوبت دهی تعویض پلاک و دفاتر پلیس
+                        </a>
+                        <a href="https://ghabzino.com/annualtoll" target="_blank" class="link-btn">
+                            پرداخت عوارض شهرداری (قبضینو)
+                        </a>
+                        <a href="https://pishkhan24.com/avarezkhodro/" target="_blank" class="link-btn">
+                            پرداخت عوارض شهرداری (پیشخوان ۲۴)
+                        </a>
+                        <a href="https://ikcosales.ir/" target="_blank" class="link-btn">
+                           ثبت نام ایران خودرو
+                        </a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- دسته: تحصیلی و آموزشی -->
+            <section class="category-card edu">
+                <div class="category-header">
+                    <h2 class="category-title">تحصیلی و آموزشی</h2>
+                    <span class="link-count">2 لینک</span>
+                </div>
+                <div class="links-container">
+                    <div class="links-grid">
+                        <a href="https://sanjesh.org/" target="_blank" class="link-btn">
+                            سازمان سنجش آموزش کشور
+                        </a>
+                        <a href="https://emt.medu.ir/" target="_blank" class="link-btn">
+                            تاییدیه مدرک تحصیلی و کد رهگیری
+                        </a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- دسته: اداری و دولتی -->
+            <section class="category-card gov">
+                <div class="category-header">
+                    <h2 class="category-title">اداری و دولتی</h2>
+                    <span class="link-count">8 لینک</span>
+                </div>
+                <div class="links-container">
+                    <div class="links-grid">
+                        <a href="https://pishkhan24.com/electronic-subsidy/" target="_blank" class="link-btn">
+                            استعلام کالابرگ الکترونیکی
+                            <!--*500*1463#-->
+                        </a>
+                        <a href="https://gnaf.post.ir/v2/main" target="_blank" class="link-btn">
+                            دریافت گواهی کدپستی
+                        </a>
+                        <a href="https://sabteahval.ir/" target="_blank" class="link-btn">
+                            سازمان ثبت احوال کشور
+                        </a>
+                        <a href="https://eservices.tamin.ir/view/#/main" target="_blank" class="link-btn">
+                            دریافت فیش حقوقی و سابقه بیمه تامین اجتماعی
+                        </a>
+                        <a href="https://eservices.cspf.ir/Home/index.html" target="_blank" class="link-btn">
+                         دریافت فیش حقوقی بازنشستگان کشوری
+                       <!--cspf.ir-->
+                        </a>
+                          <a href="https://eservices.tamin.ir/view/#/main" target="_blank" class="link-btn">
+                             گواهی کسر از حقوق
+                            <!--با کد رمز در تامین اجتماعی من-->
+                        </a>
+                        <a href="https://serwis.ir/" target="_blank" class="link-btn">
+                           مالیات نقل و انتقال خودرو
+                           <!--etax.ir-->
+                        </a>
+                        <a href="https://ehraz.post.ir/" target="_blank" class="link-btn">
+                           (برای پلیس راهور) احراز کد پستی
+                        </a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- دسته: قضایی و حقوقی -->
+            <section class="category-card law">
+                <div class="category-header">
+                    <h2 class="category-title">قضایی و حقوقی</h2>
+                    <span class="link-count">۴ لینک</span>
+                </div>
+                <div class="links-container">
+                    <div class="links-grid">
+                        <a href="https://adliran.ir/Home/Index" target="_blank" class="link-btn">
+                           درگاه خدمات الکترونیک قضائی
+                        </a>
+                        <a href="https://sana.adliran.ir/Sana/Index#/Main" target="_blank" class="link-btn">
+                           سامانه احراز هویت ثنا
+                        </a>
+                        <a href="https://amlak.mrud.ir/" target="_blank" class="link-btn">
+                           سامانه ثبت اسناد واملاک کشور
+                        </a>
+                    
+                        <a href="https://setadiran.ir/setad/cms" target="_blank" class="link-btn">
+                          (مزایده قوه قضائیه) ستاد
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+   
+    </div>
+</body>
+</html>
